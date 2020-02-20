@@ -36,8 +36,22 @@ class App extends React.Component {
             newOmen: ""
         })
         // console.log(omens)
+    }
+
+    handleRemoveOmen = () => {
+        const omen = this.state.omen
+        let omens = [...this.state.omens];
+        console.log(omen)
+
+        omens = omens.filter(arrayElement => arrayElement !== omen);
+        this.setState({
+            omens,
+            omen: ""
+        })
+
 
     }
+
 
     render() {
         const omen = this.state.omen;
@@ -57,8 +71,11 @@ class App extends React.Component {
                 <button onClick={this.handleAddOmen}>Dodaj wróżbę</button>
                 <br />
                 <br />
-                <h2>{omen}</h2>
-
+                <div>
+                    <h2>{omen}</h2>
+                    {omen ? <button onClick={this.handleRemoveOmen}>-</button> : null}
+                    {/* <DeleteButton click={this.handleRemoveOmen} /> */}
+                </div>
             </>
         );
     }
